@@ -4,7 +4,7 @@
 
 NOTE: While managing authentication on the client side is crucial, it is equally vital to implement robust security measures on the server to protect resources. Client-side authentication enhances user experience and complements server-side security measures.
 
-Protetcting resources comprises two key components:
+Protecting resources comprises two key components:
 
 ### Authentication
 
@@ -12,7 +12,7 @@ Authentication is the process of verifying the identity of a user. In single-pag
 
 The most secure practice is to store the token in the application state. However, it's important to note that if the user refreshes the application, the token will be reset. That can lead to the loss of the user's authentication status.
 
-That is why tokens need to be are stored in a cookie or `localStorage/sessionStorage`.
+That is why tokens need to be stored in a cookie or `localStorage/sessionStorage`.
 
 #### `localStorage` vs cookie for storing tokens
 
@@ -22,7 +22,7 @@ Opting to store tokens in cookies, configured with the `HttpOnly` attribute, can
 
 In addition to securely storing tokens, it's crucial to protect the entire application from Cross-Site Scripting (XSS) attacks. One key strategy is to sanitize all user inputs before displaying them in the application. By carefully sanitizing inputs, you can reduce the risk of XSS vulnerabilities, making the application more resilient to malicious attacks and enhancing overall security for users.
 
-[HTML Sanitization Example Code](../src/components/ui/md-preview/md-preview.tsx)
+[HTML Sanitization Example Code](../apps/react-vite/src/components/ui/md-preview/md-preview.tsx)
 
 For a full list of security risks, check [OWASP](https://owasp.org/www-project-top-10-client-side-security-risks/).
 
@@ -33,7 +33,7 @@ If you are already using `react-query`, you can use [react-query-auth](https://g
 
 User information should be treated as a central piece of data accessible throughout the application. If you are already using `react-query`, consider using it for storing user data as well. Alternatively, you can leverage React context with hooks or opt for a third-party state management library to efficiently manage user state across your application.
 
-[Auth Configuration Example Code](../src/lib/auth.tsx)
+[Auth Configuration Example Code](../apps/react-vite/src/lib/auth.tsx)
 
 The application will assume the user is authenticated if a user object is present.
 
@@ -43,11 +43,11 @@ Authorization is the process of verifying whether a user has permission to acces
 
 #### RBAC (Role based access control)
 
-[Authorization Configuration Example Code](../src/lib/authorization.tsx)
+[Authorization Configuration Example Code](../apps/react-vite/src/lib/authorization.tsx)
 
 In a role-based authorization model, access to resources is determined by defining specific roles and associating them with permissions. For example, roles such as `USER` and `ADMIN` can be assigned different levels of access rights within the application. Users are then granted access based on their roles; for instance, restricting certain functionalities to regular users while permitting administrators to access all features and functionalities.
 
-[RBAC Example Code](../src/features/discussions/components/create-discussion.tsx)
+[RBAC Example Code](../apps/react-vite/src/features/discussions/components/create-discussion.tsx)
 
 #### PBAC (Permission based access control)
 
@@ -55,4 +55,4 @@ While Role-Based Access Control (RBAC) provides a structured methodology for aut
 
 For RBAC protection, you can use the `RBAC` component by passing allowed roles to it. On the other hand, if you need more strict protection, you can pass policies check to it.
 
-[PBAC Example Code](../src/features/comments/components/comments-list.tsx)
+[PBAC Example Code](../apps/react-vite/src/features/comments/components/comments-list.tsx)
